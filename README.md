@@ -3,8 +3,9 @@ zend-codetracing-html: Convert Zend Server Code Tracing dump files to HTML
 
 About
 -----
-This small utility can be used to convert Zend Server Code Tracing [1] dump 
-files into HTML, with some JavaScript, which can be displayed in any browser.
+This small utility can be used to convert 
+[Zend Server Code Tracing](http://www.zend.com/en/products/server/zend-server-code-tracing)
+dump files into HTML, with some JavaScript, which can be displayed in any browser.
 
 I have started this project because I found it hard to work with the default 
 Flash-based viewer included in Zend Server and Zend Studio; while I find 
@@ -68,7 +69,4 @@ Converter:
 
 Packaging:
  - Split single file into multiple class files and provide a PEAR package
-
-
-[1] http://www.zend.com/en/products/server/zend-server-code-tracing
 
