@@ -244,6 +244,16 @@ EOHTML;
 
         // Create tooltip
         $html .= '<div class="step-tooltip">';
+
+        if (isset($step->data['this'])) {
+            $html .= '<div>Instance: ' . htmlspecialchars($step->data['this']) . '</div>';
+        }
+
+        if (isset($step->data['arguments'])) {
+            $html .= '<div>Arguments: ' . htmlspecialchars($step->data['arguments']) . '</div>';
+        }
+
+        $html .= '<div>';
         if (isset($step->data['retvalue'])) {
             $html .= 'Returned: ' . htmlspecialchars($step->data['retvalue']);
         } elseif (isset($step->data['throws'])) {
@@ -253,10 +263,10 @@ EOHTML;
             $class .= " constructor";
             $html .= 'Returned: ' . htmlspecialchars($step->data['this']);
         } else {
-            $html .= 'Returned: void';
+            $html .= 'Returned: null';
         }
 
-        $html .= '</div>';
+        $html .= '</div></div>';
 
         return $html;
     }
