@@ -218,6 +218,9 @@ class Parser
         if (preg_match('/\) -> (.+)$/', $line, $match, PREG_OFFSET_CAPTURE)) {
             $data['retvalue'] = $match[1][0];
             $line = substr($line, 1, $match[0][1]);
+        } elseif (preg_match('/\) THROWS (.+)$/', $line, $match, PREG_OFFSET_CAPTURE)) {
+            $data['throws'] = $match[1][0];
+            $line = substr($line, 1, $match[0][1]);
         } else {
             $line = substr($line, 1, -1);
         }

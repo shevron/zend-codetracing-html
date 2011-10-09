@@ -51,6 +51,19 @@ The zend-codetracing-html tool is distributed under the terms of the New BSD
 License; See LICENSE for details. 
 
 
+Acknowledgements
+----------------
+Produced HTML files rely on the [jQuery](http://jquery.com/) JavaScript library.
+
+The [jQuery Tooltip Plugin](http://bassistance.de/jquery-plugins/jquery-plugin-tooltip/) 
+code is embedded into generated HTML files, and as such it's source code is 
+included in this project and is used under the terms of the MIT license. 
+
+All rights on the jQuery Tooltip Plugin code are Copyright (c) 2006 - 2008 Jörn Zaefferer; 
+The MIT license under which this plugin is licensed is available 
+[here](http://www.opensource.org/licenses/mit-license.php)
+
+
 TODO
 ----
 
