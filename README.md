@@ -73,5 +73,5 @@ TODO
 
 *Packaging*:
 
-- Split single file into multiple class files and provide a PEAR package
+- Provide as a PEAR package
 
