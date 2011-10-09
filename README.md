@@ -51,8 +51,6 @@ The zend-codetracing-html tool is distributed under the terms of the New BSD
 License; See LICENSE for details. 
 
 
-
-
 TODO
 ----
 
@@ -61,7 +59,6 @@ TODO
 - Add ability to re-show filtered out elements
 - Provide more information in tooltips: arguments, $this, etc.
 - Provide ability to trace object instance 
-- Improve HTML layout so no parts hide under the title part
 - Provide additional formatters (e.g. xml) ?
 
 *Converter*: 

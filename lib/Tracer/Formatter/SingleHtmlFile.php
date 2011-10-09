@@ -29,10 +29,17 @@ class SingleHtmlFile implements FormatterInterface
 <head>
     <title>$title</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
     <script src="http://cdn.jquerytools.org/1.2.6/jquery.tools.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            // Fix trace window dimentions
+            $(window).resize(function() {
+                setViewportSize();
+            });
+            setViewportSize();
+
+            // Attach collapse / expand function
             $("#trace li:has(ul) div label").click(function() {
                 var parentItem = $(this).closest("li");
                 $(parentItem).children("ul").first().toggle();
@@ -47,6 +54,11 @@ class SingleHtmlFile implements FormatterInterface
 
             $("#trace li label[title]").tooltip();
         });
+
+        function setViewportSize() {
+            $("#trace").height($(document).height() - 114);
+            $("#trace").width($(window).width() - 24);
+        }
 
         function toParent(a) {
             var parentId = $(a).closest("ul").closest("li").attr('id');
@@ -65,7 +77,7 @@ class SingleHtmlFile implements FormatterInterface
     <style type="text/css">
         body { font-family: Tahoma, sans-serif; font-size: 9pt; padding: 0; margin: 0 }
         h2 { margin: 0; }
-        #trace { padding: 1em; margin-top: 110px; }
+        #trace { padding: 1em; position: fixed; left: 0; width: 100%; top: 114px; overflow: scroll; z-index: 0; }
         #trace ul { margin: 0; padding: 0; list-style-type: none; }
         /*#trace li.highlight { background-color: #ff7f20; }*/
         #trace li ul { padding-left: 1em; }
@@ -78,7 +90,7 @@ class SingleHtmlFile implements FormatterInterface
         #trace li div .line-controls { display: none; margin-left: 2em; }
         #trace li div:hover .line-controls { display: inline-block; }
         #trace li div:hover { background-color: #f0f000; }
-        #heading { padding: 1em; border-bottom: 1px solid #a0a0a0; position: fixed; top: 0px; left: 0px; width: 100%; box-shadow: 5px 5px 10px #a0a0a0; height: 90px; background-color: #ffffff; }
+        #heading { padding: 1em; border-bottom: 1px solid #a0a0a0; position: fixed; top: 0px; left: 0px; width: 100%; box-shadow: 5px 5px 10px #a0a0a0; height: 90px; background-color: #ffffff; z-index: 10; }
         .tooltip { display:none; background: #333; color:#fff; padding: 5px; border-radius: 3px; box-shadow: 3px 3px 5px #aaa; }
     </style>
 </head>
