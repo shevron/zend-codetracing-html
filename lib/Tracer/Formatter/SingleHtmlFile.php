@@ -79,13 +79,15 @@ class SingleHtmlFile implements FormatterInterface
         h2 { margin: 0; }
         #trace { padding: 1em; position: fixed; left: 0; width: 100%; top: 114px; overflow: scroll; z-index: 0; }
         #trace ul { margin: 0; padding: 0; list-style-type: none; }
-        /*#trace li.highlight { background-color: #ff7f20; }*/
+        #trace li.highlight { background-color: #ff7f20; }
         #trace li ul { padding-left: 1em; }
         #trace ul li.folded { background-color: #e0e0e0; color: #a0a0a0; }
-        #trace .include div { background-color: #9edede; }
-        #trace .functioncall div { background-color: #ffffff; }
-        #trace .header div { background-color: #bcbcff; }
-        #trace .write, #trace .exit, #trace .sendheaders div { background-color: #fcfc20; }
+        #trace .include > div { background-color: #9edede; }
+        #trace .functioncall > div { background-color: #ffffff; }
+        #trace .header > div { background-color: #bcbcff; }
+        #trace .write > div,
+        #trace .exit > div,
+        #trace .sendheaders > div { background-color: #fcfc20; }
         #trace label { font-family: monospace; font-weight: bold }
         #trace li div .line-controls { display: none; margin-left: 2em; }
         #trace li div:hover .line-controls { display: inline-block; }
