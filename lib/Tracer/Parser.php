@@ -226,7 +226,7 @@ class Parser
         }
 
         // We should be left with only arguments and 'this'
-        if (preg_match('/^(?:this=([^|]+)|)?(.*)$/', $line, $match)) {
+        if (preg_match('/^(?:this=([^|]+)\|)?(.*)$/', $line, $match)) {
             if ($match[1]) {
                 $data['this'] = $match[1];
             }
