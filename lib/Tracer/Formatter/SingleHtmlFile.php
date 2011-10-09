@@ -92,6 +92,7 @@ class SingleHtmlFile implements FormatterInterface
         #trace .include > div { background-color: #9edede; }
         #trace .functioncall > div { background-color: #ffffff; }
         #trace .header > div { background-color: #bcbcff; }
+        #trace .throws > div { background-color: #ffbcbc !important; }
         #trace .write > div,
         #trace .exit > div,
         #trace .sendheaders > div { background-color: #fcfc20; }
