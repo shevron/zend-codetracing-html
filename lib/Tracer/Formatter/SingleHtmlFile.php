@@ -261,7 +261,6 @@ EOHTML;
             $html .= 'Exception Thrown: ' . htmlspecialchars($step->data['throws']);
         } elseif ($step->data['funcname'] == '__construct') {
             $class .= " constructor";
-            $html .= 'Returned: ' . htmlspecialchars($step->data['this']);
         } else {
             $html .= 'Returned: null';
         }

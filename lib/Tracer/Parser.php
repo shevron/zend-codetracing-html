@@ -217,16 +217,16 @@ class Parser
         // Extract return value
         if (preg_match('/\) -> (.+)$/', $line, $match, PREG_OFFSET_CAPTURE)) {
             $data['retvalue'] = $match[1][0];
-            $line = substr($line, 1, $match[0][1]);
+            $line = substr($line, 1, $match[0][1] - 1);
         } elseif (preg_match('/\) THROWS (.+)$/', $line, $match, PREG_OFFSET_CAPTURE)) {
             $data['throws'] = $match[1][0];
-            $line = substr($line, 1, $match[0][1]);
+            $line = substr($line, 1, $match[0][1] - 1);
         } else {
             $line = substr($line, 1, -1);
         }
 
         // We should be left with only arguments and 'this'
-        if (preg_match('/^(?:this=([^|]+)\|)?(.*)$/', $line, $match)) {
+        if (preg_match('/^(?:this=(.+?)\|)?(.*)$/', $line, $match)) {
             if ($match[1]) {
                 $data['this'] = $match[1];
             }
