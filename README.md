@@ -64,6 +64,7 @@ TODO
 *Converter*: 
 
 - Handle ERROR blocks and possibly other unhandled types
+- Handle THROWS marker on function calls / include calls
 - Split arguments into an array
 - Handle location and origin information provided by zmd extra flags
 - Use binary format as input, dropping requirement for zmd use
