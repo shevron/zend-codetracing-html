@@ -12,6 +12,8 @@ class SingleHtmlFile implements FormatterInterface
 
     protected $openItem = false;
 
+    protected $funcnames = array();
+
     public function __construct($config = array())
     {
         if (isset($config['title'])) {
@@ -37,6 +39,12 @@ class SingleHtmlFile implements FormatterInterface
                 setViewportSize();
             });
             setViewportSize();
+
+            // Replace function name references
+            $("#trace label.fn").each(function(i) {
+                var name = funcnametbl[parseInt($(this).text(), 10)];
+                if (name) { $(this).html(name); }
+            });
 
             // Attach collapse / expand function
             $("#trace li:has(ul) > div label").click(function() {
@@ -218,7 +226,24 @@ EOHTML;
         } else {
             $output = "\n";
         }
-        return "$output</ul></div></body></html>";
+        $output .= "</ul></div>";
+
+        // write function name table
+        $output .= '<script type="text/javascript">var funcnametbl = ' .
+            json_encode(array_flip($this->funcnames)) . ';</script>';
+
+        $output .= "</body></html>";
+
+        return $output;
+    }
+
+    protected function getFuncNameRef($fname)
+    {
+        if (! isset($this->funcnames[$fname])) {
+            $this->funcnames[$fname] = count($this->funcnames) + 1;
+        }
+
+        return $this->funcnames[$fname];
     }
 
     protected function getFunctioncallHtml(Step $step, &$class)
@@ -227,7 +252,7 @@ EOHTML;
             $class = "functioncall";
         }
 
-        $html = '<label>';
+        $html = '<label class="fn">';
 
         if (isset($step->data['classname'])) {
             $class .= " method";
@@ -240,7 +265,7 @@ EOHTML;
             $funcname = htmlspecialchars($step->data['funcname']);
         }
 
-        $html .= $funcname . '()</label>';
+        $html .= $this->getFuncNameRef($funcname) . '</label>';
 
         // Create tooltip
         $html .= '<div class="step-tooltip">';
