@@ -304,7 +304,7 @@ class Parser
      */
     protected function parseRuntime(&$line)
     {
-        if (preg_match('/\s*\[(\d+) us\]\s*$/', $line, $match, PREG_OFFSET_CAPTURE)) {
+        if (preg_match('/\s*\[(-?\d+) us\]\s*$/', $line, $match, PREG_OFFSET_CAPTURE)) {
             $time = $match[1][0] / 1000;
             $line = substr($line, 0, $match[0][1]);
         } else {
