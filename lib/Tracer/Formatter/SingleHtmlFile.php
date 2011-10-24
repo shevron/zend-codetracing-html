@@ -53,9 +53,9 @@ class SingleHtmlFile implements FormatterInterface
                 $(parentItem).toggleClass("folded");
                 if ($(parentItem).hasClass("folded")) {
                     var hiddenLines = $("li", parentItem).length;
-                    $(" > div", parentItem).append('<span class="folded-info">[' + hiddenLines + ' lines hidden]</span>');
+                    $(this).append('<span class="folded-info">[' + hiddenLines + ' lines hidden]</span>');
                 } else {
-                    $('span.folded-info', parentItem).remove();
+                    $('span.folded-info', this).remove();
                 }
             });
 
@@ -109,6 +109,7 @@ class SingleHtmlFile implements FormatterInterface
         #trace li div .line-controls { display: none; margin: 0 1em; }
         #trace li > div:hover .line-controls { display: inline-block; }
         #trace li .trace-id { display: inline-block; float: right; }
+        #trace li .folded-info { display: inline-block; margin: 0 1em; }
         #trace li > div:hover { background-color: #f0f000; }
         #heading { padding: 1em; border-bottom: 1px solid #a0a0a0; position: fixed; top: 0px; left: 0px; width: 100%; box-shadow: 5px 5px 10px #a0a0a0; height: 90px; background-color: #ffffff; z-index: 10 }
         .step-tooltip { display: none; }
