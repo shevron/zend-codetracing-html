@@ -160,6 +160,11 @@ class Parser
         $data['originalurl'] = $parts[2];
         $data['remoteip']    = $parts[4];
 
+        if (strpos($data['originalurl'], '?dump_data=1') !== false) {
+            // Strip out dump_data parameter
+            $data['originalurl'] = str_replace('?dump_data=1', '', $data['originalurl']);
+        }
+
         return $data;
     }
 
