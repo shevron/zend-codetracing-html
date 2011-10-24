@@ -104,6 +104,7 @@ class SingleHtmlFile implements FormatterInterface
         #trace .write > div,
         #trace .exit > div,
         #trace .sendheaders > div { background-color: #fcfc20; }
+        #trace li.request > div > span { font-size: 150%; font-weight: bold; }
         #trace label { font-family: monospace; font-weight: bold }
         #trace li div .line-controls { display: none; margin: 0 1em; }
         #trace li > div:hover .line-controls { display: inline-block; }
@@ -172,7 +173,7 @@ EOHTML;
 
             case Step::REQUEST:
                 $class = 'request';
-                $html = "<h2>Request for {$line->data['finalurl']} from {$line->data['remoteip']}</h2>";
+                $html = "<span>Request for {$line->data['originalurl']} from {$line->data['remoteip']}</span>";
                 break;
 
             case Step::WRITE:
