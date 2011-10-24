@@ -105,8 +105,9 @@ class SingleHtmlFile implements FormatterInterface
         #trace .exit > div,
         #trace .sendheaders > div { background-color: #fcfc20; }
         #trace label { font-family: monospace; font-weight: bold }
-        #trace li div .line-controls { display: none; margin-left: 2em; }
+        #trace li div .line-controls { display: none; margin: 0 1em; }
         #trace li > div:hover .line-controls { display: inline-block; }
+        #trace li .trace-id { display: inline-block; float: right; }
         #trace li > div:hover { background-color: #f0f000; }
         #heading { padding: 1em; border-bottom: 1px solid #a0a0a0; position: fixed; top: 0px; left: 0px; width: 100%; box-shadow: 5px 5px 10px #a0a0a0; height: 90px; background-color: #ffffff; z-index: 10 }
         .step-tooltip { display: none; }
@@ -197,6 +198,7 @@ EOHTML;
             if ($this->traceId > 1) {
                 $output .= '<span class="line-controls"><a href="#" onclick="toParent(this); return false;">to parent</a></span>';
             }
+            $output .= '<span class="trace-id">' . $this->traceId . '</span>';
             $output .= '</div>';
 
         } else {
