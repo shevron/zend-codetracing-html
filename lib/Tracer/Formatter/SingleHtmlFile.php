@@ -43,7 +43,7 @@ class SingleHtmlFile implements FormatterInterface
             // Replace function name references
             $("#trace label.fn").each(function(i) {
                 var name = funcnametbl[parseInt($(this).text(), 10)];
-                if (name) { $(this).html(name); }
+                if (name) { $(this).text(name); }
             });
 
             // Attach collapse / expand function
@@ -230,7 +230,7 @@ EOHTML;
 
         // write function name table
         $output .= '<script type="text/javascript">var funcnametbl = ' .
-            json_encode(array_flip($this->funcnames)) . ';</script>';
+            json_encode(array_keys($this->funcnames)) . ';</script>';
 
         $output .= "</body></html>";
 
@@ -240,7 +240,7 @@ EOHTML;
     protected function getFuncNameRef($fname)
     {
         if (! isset($this->funcnames[$fname])) {
-            $this->funcnames[$fname] = count($this->funcnames) + 1;
+            $this->funcnames[$fname] = count($this->funcnames);
         }
 
         return $this->funcnames[$fname];
@@ -257,12 +257,9 @@ EOHTML;
         if (isset($step->data['classname'])) {
             $class .= " method";
             if (! isset($step->data['this'])) $class .= " static";
-
-            $funcname = htmlspecialchars($step->data['classname'] .
-                (isset($step->data['this']) ? '->' : '::') . $step->data['funcname']);
-
+            $funcname = $step->data['classname'] . (isset($step->data['this']) ? '->' : '::') . $step->data['funcname'];
         } else {
-            $funcname = htmlspecialchars($step->data['funcname']);
+            $funcname = $step->data['funcname'];
         }
 
         $html .= $this->getFuncNameRef($funcname) . '</label>';
